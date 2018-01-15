@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#BBAAFF"
+    android:orientation="vertical"
+    android:padding="20px"
     tools:context="com.example.bit_user.testapp2.MainActivity">
 
     <TextView
@@ -12,25 +14,49 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="50px"
+        android:layout_marginBottom="20px"
+        android:layout_marginTop="20px"
         android:text="@string/Hello"
-        android:textSize="20pt"
-        android:textStyle="italic"
         android:textColor="#AA00FF"
-        android:layout_marginBottom="50px"
-        />
+        android:textSize="20pt"
+        android:textStyle="italic" />
+
+    <EditText
+        android:id="@+id/edittext1"
+        android:layout_width="match_parent"
+        android:layout_height="110px"
+        android:layout_marginBottom="80dp"
+        android:layout_marginTop="20dp"
+        android:hint="그 사람의 이름을 입력하세요"
+        android:padding="30px" />
+
+    <Button
+        android:layout_width="80px"
+        android:layout_height="80px"
+        android:layout_gravity="center"
+        android:text="감춰진 버튼"
+        android:visibility="invisible" />
+
+    <Button
+        android:layout_width="80px"
+        android:layout_height="80px"
+        android:layout_gravity="center"
+        android:text="사라진 버튼"
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/btn1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginBottom="0px"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="8dp"
         android:background="#00FFFF"
         android:text="눌러서 작별 인사"
-        android:layout_marginBottom="50px"
         android:textColor="@color/colorAccent"
+        android:textSize="30dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -41,43 +67,51 @@
     <Button
         android:id="@+id/btn2"
         android:layout_width="match_parent"
-        android:layout_height="230px"
+        android:layout_height="450px"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="커다란 버튼"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
         android:background="#FFAA00"
+        android:text="커다란 버튼"
+        android:textColor="#00FFFF"
+        android:textSize="25pt"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn1" />
 
-    <RadioButton
-        android:id="@+id/radioMale"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="남성"
-        app:layout_constraintBottom_toTopOf="@+id/radioFemale"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.866" />
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <RadioButton
-        android:id="@+id/radioFemale"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="116dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:text="여성"
-        app:layout_constraintBottom_toTopOf="@+id/text1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <RadioButton
+            android:id="@+id/radioMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="남성"
+            app:layout_constraintBottom_toTopOf="@+id/radioFemale"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.866" />
 
+        <RadioButton
+            android:id="@+id/radioFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="여성"
+            app:layout_constraintBottom_toTopOf="@+id/text1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </RadioGroup>
 </LinearLayout>
