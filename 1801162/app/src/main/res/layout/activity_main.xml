@@ -16,7 +16,6 @@
             android:id="@+id/chk10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
             android:text="국가유공자" />
 
         <CheckBox
@@ -46,25 +45,25 @@
         android:orientation="horizontal">
 
         <RadioButton
-            android:id = "@+id/rb_SKT"
+            android:id="@+id/rb_SKT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SKT" />
 
         <RadioButton
-            android:id = "@+id/rb_KTF"
+            android:id="@+id/rb_KTF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="KTF" />
 
         <RadioButton
-            android:id = "@+id/rb_LGU"
+            android:id="@+id/rb_LGU"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="LGU" />
 
         <RadioButton
-            android:id = "@+id/rb_MVNO"
+            android:id="@+id/rb_MVNO"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="MVNO" />
@@ -77,28 +76,41 @@
         android:orientation="vertical">
 
         <Button
-            android:id = "@+id/btnIphone"
+
+            android:id="@+id/btnIphone"
+            android:visibility="invisible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="아이폰 구매" />
 
         <Button
-            android:id = "@+id/btnNote"
+            android:id="@+id/btnNote"
+            android:visibility="invisible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="갤럭시 노트 구매" />
 
         <Button
-            android:id = "@+id/btnFeature"
+            android:id="@+id/btnFeature"
+            android:visibility="invisible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="피쳐폰 구매" />
     </LinearLayout>
 
+    <TextView
+        android:gravity="center"
+        android:id="@+id/result"
+        android:textColor="#ff00ff"
+        android:textSize="15pt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="263dp"
+        android:layout_height="164dp"
+        android:layout_gravity="center"
         app:srcCompat="@drawable/mvno" />
 
 

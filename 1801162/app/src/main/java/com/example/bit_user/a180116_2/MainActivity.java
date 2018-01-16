@@ -8,6 +8,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -15,14 +16,16 @@ public class MainActivity extends AppCompatActivity {
     Button btnNote;
     Button btnFeature;
     RadioGroup grpProvider;
-
+    TextView result;
     CheckBox chkDisabled;
     CheckBox chkHonor;
     CheckBox chkStudent;
     CheckBox chkSpecial;
     ImageView img1;
-    public void setProviderImage(){
-        switch(grpProvider.getCheckedRadioButtonId()){
+
+    public void setProviderImage() {
+        RadioButton rb = findViewById(grpProvider.getCheckedRadioButtonId());
+        switch (rb.getId()) {
             case R.id.rb_SKT:
                 img1.setImageResource(R.drawable.skt);
                 break;
@@ -37,7 +40,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
-    double getDiscountRate(){
+    void setResultText(double original, double price){
+        String str;
+        str = String.format("원가:%.0f\n할인율 : %.0f%%\n-------------\n구매 가격:%.0f\n",original,getDiscountRate()*100,price);
+        result.setText(str);
+    }
+    double getDiscountRate() {
         double discount_rate = 0;
         if (chkDisabled.isChecked())
             discount_rate += 0.2; // 20% 할인
@@ -52,9 +60,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("");
+        setTitle("휴대폰 구매하기");
         setContentView(R.layout.activity_main);
 
+        img1 = findViewById(R.id.imageView);
         btnNote = findViewById(R.id.btnNote);
         btnIphone = findViewById(R.id.btnIphone);
         btnFeature = findViewById(R.id.btnFeature);
@@ -63,12 +72,22 @@ public class MainActivity extends AppCompatActivity {
         chkDisabled = findViewById(R.id.chk20);
         chkStudent = findViewById(R.id.chk30);
         chkSpecial = findViewById(R.id.chk40);
+        result = findViewById(R.id.result);
 
+        grpProvider.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                btnFeature.setVisibility(View.VISIBLE);
+                btnIphone.setVisibility(View.VISIBLE);
+                btnNote.setVisibility(View.VISIBLE);
+            }
+        });
         btnIphone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setProviderImage();
                 double price = 1500000 * (1 - getDiscountRate());
+                setResultText(1500000.0,price);
                 Toast.makeText(getApplicationContext(), "아이폰을 " + price + "원에 구매했습니다.", Toast.LENGTH_SHORT).show();
             }
         });
@@ -77,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 setProviderImage();
                 double price = 1200000 * (1 - getDiscountRate());
+                setResultText(1200000.0,price);
                 Toast.makeText(getApplicationContext(), "노트를 " + price + "원에 구매했습니다.", Toast.LENGTH_SHORT).show();
             }
         });
@@ -85,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 setProviderImage();
                 double price = 1000000 * (1 - getDiscountRate());
+                setResultText(1000000.0,price);
                 Toast.makeText(getApplicationContext(), "피쳐폰을 " + price + "원에 구매했습니다.", Toast.LENGTH_SHORT).show();
             }
         });
