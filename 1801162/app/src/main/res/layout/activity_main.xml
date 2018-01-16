@@ -1,9 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.bit_user.a180116_2.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <CheckBox
+            android:id="@+id/chk10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="국가유공자" />
+
+        <CheckBox
+            android:id="@+id/chk20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="장애인" />
+
+        <CheckBox
+            android:id="@+id/chk30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="학생" />
+
+        <CheckBox
+            android:id="@+id/chk40"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="특별할인" />
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/grpProvider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id = "@+id/rb_SKT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SKT" />
+
+        <RadioButton
+            android:id = "@+id/rb_KTF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="KTF" />
+
+        <RadioButton
+            android:id = "@+id/rb_LGU"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LGU" />
+
+        <RadioButton
+            android:id = "@+id/rb_MVNO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MVNO" />
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id = "@+id/btnIphone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="아이폰 구매" />
+
+        <Button
+            android:id = "@+id/btnNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="갤럭시 노트 구매" />
+
+        <Button
+            android:id = "@+id/btnFeature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="피쳐폰 구매" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/mvno" />
+
 
 </LinearLayout>
