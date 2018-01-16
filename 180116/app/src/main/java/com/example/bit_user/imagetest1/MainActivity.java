@@ -37,15 +37,15 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                if (value1.getText().toString().isEmpty() || value2.getText().toString().isEmpty() || radioGrp1.getCheckedRadioButtonId()==-1) {
+                if (value1.getText().toString().trim().isEmpty() || value2.getText().toString().trim().isEmpty() || radioGrp1.getCheckedRadioButtonId() == -1) {
                     // 라디오 그룹에 체크된 버튼이 없을 경우 -1 반환.
                     Toast.makeText(getApplicationContext(), "값이 비어있거나 연산을 선택하지 않았습니다.", Toast.LENGTH_SHORT).show();
                 } else {
                     if (!flag) {
                         result.setVisibility(View.VISIBLE);
                         Double tmp1, tmp2, res;
-                        tmp1 = Double.parseDouble(value1.getText().toString());
-                        tmp2 = Double.parseDouble(value2.getText().toString());
+                        tmp1 = Double.parseDouble(value1.getText().toString().trim());
+                        tmp2 = Double.parseDouble(value2.getText().toString().trim());
                         RadioButton rd = findViewById(radioGrp1.getCheckedRadioButtonId());
                         switch (rd.getId()) {
                             case R.id.radioadd:
@@ -62,7 +62,21 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                             case R.id.radiodiv:
                                 img1.setImageResource(R.drawable.divide);
-                                res = tmp1 / tmp2;
+                                if (tmp2 == 0) {
+                                    res = 0.;
+                                    Toast.makeText(getApplicationContext(), "0으로 나눌수 없습니다.", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    res = tmp1 / tmp2;
+                                }
+                                break;
+                            case R.id.radiomod:
+                                img1.setImageResource(R.drawable.mod);
+                                if (tmp2 == 0) {
+                                    res = 0.;
+                                    Toast.makeText(getApplicationContext(), "0으로 나눈 나머지를 구할수 없습니다.", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    res = tmp1 % tmp2;
+                                }
                                 break;
                             default:
                                 res = 0.;
@@ -80,8 +94,6 @@ public class MainActivity extends AppCompatActivity {
                         value1.setEnabled(true);
                         value2.setEnabled(true);
                         radioGrp1.setVisibility(View.VISIBLE);
-                        value1.setText("");
-                        value2.setText("");
                         result.setText("결과는 : ");
                         flag = false;
                         img1.setImageResource(R.drawable.calc);
