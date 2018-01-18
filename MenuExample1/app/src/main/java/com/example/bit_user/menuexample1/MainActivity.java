@@ -1,7 +1,9 @@
 package com.example.bit_user.menuexample1;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ContextMenu;
 import android.view.Display;
@@ -17,7 +19,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     LinearLayout baseLayout;
-    Button button1;
+    Button button1, button2;
     static int angle;
 
     @Override
@@ -90,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         baseLayout = findViewById(R.id.baseLayout);
         button1 = findViewById(R.id.btn1);
+        button2 = findViewById(R.id.btn2);
         registerForContextMenu(button1);
 
         button1.setOnClickListener(new View.OnClickListener() {
@@ -102,6 +105,29 @@ public class MainActivity extends AppCompatActivity {
 
                 msg.setGravity(Gravity.TOP | Gravity.LEFT, xOffset, yOffset);
                 msg.show();
+            }
+        });
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder dlg = new AlertDialog.Builder(MainActivity.this);
+                dlg.setTitle("제목");
+                dlg.setMessage("내용내용내용내용");
+                dlg.setIcon(R.drawable.ic_search_black_24dp);
+                dlg.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getApplicationContext(),"확인 눌렀습니다.",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                dlg.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getApplicationContext(),"취소 눌렀습니다.",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                dlg.show();
             }
         });
 
