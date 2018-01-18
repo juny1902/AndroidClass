@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.bit_user.a180118_1.MainActivity">
+
+    <Chronometer
+        android:id="@+id/chronometer1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#33000000"
+        android:format="예약에 걸린 시간 : %s"
+        android:gravity="center" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:visibility="invisible"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/radioDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="날짜 설정" />
+
+        <RadioButton
+            android:id="@+id/radioTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="시간 설정" />
+
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/PickerFrame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <TimePicker
+            android:visibility="invisible"
+            android:id="@+id/TimePicker1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></TimePicker>
+
+        <DatePicker
+            android:layout_gravity="center"
+            android:visibility="invisible"
+            android:id="@+id/DatePicker1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></DatePicker>
+
+    </FrameLayout>
+    <LinearLayout
+        android:id="@+id/rateLayout"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+        <RatingBar
+            android:id="@+id/rate1"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="  평점 : "
+            android:id="@+id/rateText"
+            android:textSize="12pt"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/reservation1"
+        android:textSize="10pt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#33000000"
+        android:gravity="center"
+        android:text="0000년 00월 00일 00시 00분 예약됨\n만족도 : 0.0 점" />
+
+</LinearLayout>
