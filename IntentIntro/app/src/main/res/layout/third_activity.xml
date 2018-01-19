@@ -1,0 +1,19 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0000FF"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btnReturn2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="돌아가기" />
+
+    <Button
+        android:id="@+id/btnTo4th"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="네번째 액티비티로" />
+
+</LinearLayout>
