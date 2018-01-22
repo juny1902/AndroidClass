@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.bit_user.parallelcalculator.OperatorActivity">
+
+    <TextView
+        android:id="@+id/Number1_View"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="첫번째 수 : " />
+
+    <TextView
+        android:id="@+id/Number2_View"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="두번째 수 : " />
+
+    <Button
+        android:id="@+id/buttonPlus"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:onClick="onOperatorClick"
+        android:text="+"
+        android:textSize="20pt" />
+
+    <Button
+        android:id="@+id/buttonMinus"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:onClick="onOperatorClick"
+        android:text="-"
+        android:textSize="20pt" />
+
+    <Button
+        android:id="@+id/buttonMultiplication"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:onClick="onOperatorClick"
+        android:text="×"
+        android:textSize="20pt" />
+
+    <Button
+        android:id="@+id/buttonDivide"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:onClick="onOperatorClick"
+        android:text="÷"
+        android:textSize="20pt" />
+
+    <Button
+        android:id="@+id/buttonModular"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:onClick="onOperatorClick"
+        android:text="%"
+        android:textSize="20pt" />
+    <Button
+        android:id="@+id/buttonPartial"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:onClick="onOperatorClick"
+        android:text="Num1 + ... + num2"
+        android:textSize="13pt" />
+</LinearLayout>

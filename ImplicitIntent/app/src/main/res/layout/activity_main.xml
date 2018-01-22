@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.bit_user.implicitintent.MainActivity">
+
+
+    <Button
+        android:id="@+id/button1"
+        android:onClick="onButtonClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="비트컴퓨터로 전화 걸기" />
+
+    <Button
+        android:id="@+id/button2"
+        android:onClick="onButtonClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="비트컴퓨터 홈페이지" />
+
+    <Button
+        android:id="@+id/button3"
+        android:onClick="onButtonClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="비트컴퓨터 위치" />
+
+    <Button
+        android:id="@+id/button4"
+        android:onClick="onButtonClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="비트컴퓨터 문자 보내기" />
+
+    <Button
+        android:id="@+id/button5"
+        android:onClick="onButtonClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="비트컴퓨터 검색하기" />
+</LinearLayout>
