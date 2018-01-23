@@ -12,11 +12,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
-    myDBHelper myHelper;
-    EditText edtName, edtNumber, edtNameResult, edtNumberResult;
-    Button btnInit, btnInsert, btnSelect;
-    SQLiteDatabase sqlDB;
+    // Declare Objects
+        myDBHelper myHelper;
+        EditText edtName, edtNumber, edtNameResult, edtNumberResult;
+        Button btnInit, btnInsert, btnSelect, btnUpdate, btnDelete;
+        SQLiteDatabase sqlDB;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         btnInit = (Button) findViewById(R.id.btnInit);
         btnInsert = (Button) findViewById(R.id.btnInsert);
         btnSelect = (Button) findViewById(R.id.btnSelect);
+        btnUpdate = findViewById(R.id.btnUpdate);
+        btnDelete = findViewById(R.id.btnDelete);
 
         myHelper = new myDBHelper(this);
         btnInit.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                         + edtName.getText().toString() + "' , "
                         + edtNumber.getText().toString() + ");");
                 sqlDB.close();
+                btnSelect.callOnClick();
                 Toast.makeText(getApplicationContext(), "입력됨",
                         Toast.LENGTH_SHORT).show();
             }
@@ -73,6 +76,31 @@ public class MainActivity extends AppCompatActivity {
 
                 cursor.close();
                 sqlDB.close();
+            }
+        });
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sqlDB = myHelper.getReadableDatabase();
+                sqlDB.execSQL("UPDATE groupTBL SET gNumber=" + edtNumber.getText().toString() +
+                        " WHERE gName='" + edtName.getText().toString() + "';");
+                sqlDB.close();
+                btnSelect.callOnClick();
+                Toast.makeText(getApplicationContext(), "수정 완료", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sqlDB = myHelper.getReadableDatabase();
+                sqlDB.execSQL("DELETE FROM groupTBL WHERE gName='" +
+                        edtName.getText().toString() + "';");
+                sqlDB.close();
+                btnSelect.callOnClick();
+                Toast.makeText(getApplicationContext(), "삭제 완료", Toast.LENGTH_SHORT).show();
             }
         });
 
