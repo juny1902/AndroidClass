@@ -13,10 +13,10 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     // Declare Objects
-        myDBHelper myHelper;
-        EditText edtName, edtNumber, edtNameResult, edtNumberResult;
-        Button btnInit, btnInsert, btnSelect, btnUpdate, btnDelete;
-        SQLiteDatabase sqlDB;
+    myDBHelper myHelper;
+    EditText edtName, edtNumber, edtNameResult, edtNumberResult, edtSong, edtSongResult;
+    Button btnInit, btnInsert, btnSelect, btnUpdate, btnDelete;
+    SQLiteDatabase sqlDB;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
         edtName = (EditText) findViewById(R.id.edtName);
         edtNumber = (EditText) findViewById(R.id.edtNumber);
+        edtSong = findViewById(R.id.edtSong);
+        edtSongResult = findViewById(R.id.edtSongResult);
         edtNameResult = (EditText) findViewById(R.id.edtNameResult);
         edtNumberResult = (EditText) findViewById(R.id.edtNumberResult);
 
@@ -47,9 +49,10 @@ public class MainActivity extends AppCompatActivity {
         btnInsert.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 sqlDB = myHelper.getWritableDatabase();
-                sqlDB.execSQL("INSERT INTO groupTBL VALUES ( '"
-                        + edtName.getText().toString() + "' , "
-                        + edtNumber.getText().toString() + ");");
+                sqlDB.execSQL("INSERT INTO bandTBL VALUES ( '"
+                        + edtName.getText().toString() + "' ,"
+                        + edtNumber.getText().toString() + ",'"
+                        + edtSong.getText().toString() + "');");
                 sqlDB.close();
                 btnSelect.callOnClick();
                 Toast.makeText(getApplicationContext(), "입력됨",
@@ -61,19 +64,20 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 sqlDB = myHelper.getReadableDatabase();
                 Cursor cursor;
-                cursor = sqlDB.rawQuery("SELECT * FROM groupTBL;", null);
+                cursor = sqlDB.rawQuery("SELECT * FROM bandTBL;", null);
 
                 String strNames = "그룹이름" + "\r\n" + "--------" + "\r\n";
                 String strNumbers = "인원" + "\r\n" + "--------" + "\r\n";
-
+                String strSongs = "노래제목" + "\r\n" + "--------" + "\r\n";
                 while (cursor.moveToNext()) {
                     strNames += cursor.getString(0) + "\r\n";
                     strNumbers += cursor.getString(1) + "\r\n";
+                    strSongs += cursor.getString(2) + "\r\n";
                 }
 
                 edtNameResult.setText(strNames);
                 edtNumberResult.setText(strNumbers);
-
+                edtSongResult.setText(strSongs);
                 cursor.close();
                 sqlDB.close();
             }
@@ -83,7 +87,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 sqlDB = myHelper.getReadableDatabase();
-                sqlDB.execSQL("UPDATE groupTBL SET gNumber=" + edtNumber.getText().toString() +
+                sqlDB.execSQL("UPDATE bandTBL SET gNumber=" + edtNumber.getText().toString() +
+                        ",gSong='" + edtSong.getText().toString() + "'" +
                         " WHERE gName='" + edtName.getText().toString() + "';");
                 sqlDB.close();
                 btnSelect.callOnClick();
@@ -96,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 sqlDB = myHelper.getReadableDatabase();
-                sqlDB.execSQL("DELETE FROM groupTBL WHERE gName='" +
+                sqlDB.execSQL("DELETE FROM bandTBL WHERE gName='" +
                         edtName.getText().toString() + "';");
                 sqlDB.close();
                 btnSelect.callOnClick();
@@ -108,17 +113,17 @@ public class MainActivity extends AppCompatActivity {
 
     public class myDBHelper extends SQLiteOpenHelper {
         public myDBHelper(Context context) {
-            super(context, "myDB", null, 1);
+            super(context, "newDB", null, 1);
         }
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            db.execSQL("CREATE TABLE  groupTBL ( gName CHAR(20) PRIMARY KEY, gNumber INTEGER);");
+            db.execSQL("CREATE TABLE  bandTBL ( gName CHAR(20) PRIMARY KEY, gNumber INTEGER, gSong CHAR(20));");
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            db.execSQL("DROP TABLE IF EXISTS groupTBL");
+            db.execSQL("DROP TABLE IF EXISTS bandTBL");
             onCreate(db);
         }
     }
