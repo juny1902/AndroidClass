@@ -1,0 +1,96 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.bit_user.googlemaps2.MapsActivity" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Switch
+            android:id="@+id/swMusic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/linearLayout"
+            android:text="음악 재생  "
+            android:textColor="#99FFFF00"
+            android:textSize="12pt" />
+
+        <Button
+            android:id="@+id/btnZoomIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btnZoomOut"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:background="#77FFFFFF"
+            android:text="확대"
+            android:textColor="#99FF0000"
+            android:textSize="12pt" />
+
+        <Button
+            android:id="@+id/btnZoomOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:background="#77FFFFFF"
+            android:text="축소"
+            android:textColor="#99FF0000"
+            android:textSize="12pt" />
+        <LinearLayout
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="12"
+                android:background="#88ffffff"
+                android:text="배터리"
+                android:gravity="center"
+                android:textColor="#00FF00"
+                android:textSize="20dp" />
+            <ProgressBar
+                android:layout_weight="5"
+                android:id="@+id/batteryProgress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="#88FFFFFF"/>
+
+            <TextView
+                android:layout_weight="12"
+
+                android:id="@+id/textProgress"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="#88FFFFFF"
+                android:text="100%"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="#00FF00"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+</FrameLayout>
+
+

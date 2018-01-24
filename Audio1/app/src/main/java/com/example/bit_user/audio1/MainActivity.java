@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mediaPlayer = MediaPlayer.create(this, R.raw.song1);
 
         Button startBtn = (Button) findViewById(R.id.playBtn);
         Button pauseBtn = (Button) findViewById(R.id.pauseBtn);
@@ -26,10 +27,10 @@ public class MainActivity extends AppCompatActivity {
         startBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 try {
-                    playAudio(AUDIO_URL);
-
+                    mediaPlayer.start();
                     Toast.makeText(getApplicationContext(), "음악 파일 재생 시작됨.", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "재생 실패", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }

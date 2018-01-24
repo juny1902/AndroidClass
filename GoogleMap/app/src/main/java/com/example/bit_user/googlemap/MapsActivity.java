@@ -1,10 +1,10 @@
 package com.example.bit_user.googlemap;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SubMenu;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -49,7 +49,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         mMap.addMarker(new MarkerOptions().position(home).title("우리집"));
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bita,17));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bita, 17));
 
 
     }
@@ -58,22 +58,30 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case 1:
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(bita));
+                mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
                 break;
             case 2:
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(home));
+                mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
                 break;
             case 3:
-                mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(bita));
+                break;
+            case 4:
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(home));
+                break;
+
         }
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(0, 1, 0, "비트 아카데미");
-        menu.add(0, 2, 0, "우리집");
-        menu.add(0,3,0,"일반지도");
+
+        menu.add(0, 1, 0, "일반지도");
+        menu.add(0, 2, 0, "위성지도");
+        SubMenu sMenu = menu.addSubMenu("즐겨찾기 >> ");
+        sMenu.add(0, 3, 0, "비트 아카데미");
+        sMenu.add(0, 4, 0, "우리집");
         return true;
     }
 }
