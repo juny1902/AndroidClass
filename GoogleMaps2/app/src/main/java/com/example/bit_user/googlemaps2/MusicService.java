@@ -40,6 +40,7 @@ public class MusicService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         android.util.Log.i("서비스 테스트", "onStartCommand()");
         Toast.makeText(getApplicationContext(),"음악을 재생합니다.",Toast.LENGTH_SHORT).show();
+
         mp = MediaPlayer.create(this, R.raw.song2);
         mp.setLooping(true);
         mp.start();

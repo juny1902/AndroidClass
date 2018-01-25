@@ -128,9 +128,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add(0, 1, 0, "위성지도");
         menu.add(0, 2, 0, "일반지도");
+        menu.add(0, 3, 0, "통화기록");
         SubMenu sMenu = menu.addSubMenu("즐겨찾기 >> ");
-        sMenu.add(0, 3, 0, "비트교육센터");
-        sMenu.add(0, 4, 0, "집");
+        sMenu.add(0, 4, 0, "비트교육센터");
+        sMenu.add(0, 5, 0, "집");
         return super.onCreateOptionsMenu(menu);
 
     }
@@ -145,10 +146,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
                 break;
             case 3:
+                // TODO : 통화 기록 뷰 코딩
+                Intent callsIntent = new Intent(getApplicationContext(),Calls.class);
+                startActivity(callsIntent);
+                break;
+            case 4:
                 mMap.addMarker(new MarkerOptions().position(bitLatLng).title("비트교육센터"));
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bitLatLng, 16));
                 break;
-            case 4:
+            case 5:
                 mMap.addMarker(new MarkerOptions().position(homeLatLng).title("집"));
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(homeLatLng, 16));
                 break;
